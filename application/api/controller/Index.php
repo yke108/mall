@@ -55,13 +55,13 @@ class Index extends Base
     			'title'=> '爆品推荐',
     			'data'=> [
     				[
-    					'product_id'=>1000,
+    					'product_id'=>1,
     					'product_name'=>'WiFi云标签机',
     					'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
     					'product_price'=>700,
     					'sale_price'=>600,
     				],[
-    					'product_id'=>1001,
+    					'product_id'=>1,
     					'product_name'=>'打钱机',
     					'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
     					'product_price'=>800,
@@ -83,7 +83,7 @@ class Index extends Base
 
     	$list = [
     		[
-				'product_id'=>1000,
+				'product_id'=>1,
 				'product_name'=>'WiFi云标签机',
 				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
 				'product_price'=>700,
@@ -96,7 +96,7 @@ class Index extends Base
 				'sale_price'=>500,
 			],
 			[
-				'product_id'=>1000,
+				'product_id'=>1,
 				'product_name'=>'WiFi云标签机',
 				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
 				'product_price'=>700,
@@ -109,13 +109,13 @@ class Index extends Base
 				'sale_price'=>500,
 			],
 			[
-				'product_id'=>1000,
+				'product_id'=>1,
 				'product_name'=>'WiFi云标签机',
 				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
 				'product_price'=>700,
 				'sale_price'=>600,
 			],[
-				'product_id'=>1001,
+				'product_id'=>1,
 				'product_name'=>'打钱机',
 				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
 				'product_price'=>800,
