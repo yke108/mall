@@ -2,6 +2,7 @@
 namespace app\api\controller;
 use app\api\controller\Base;
 use think\Db;
+use think\Request;
 
 class Index extends Base
 {
@@ -49,8 +50,86 @@ class Index extends Base
 	    			'banner_url'=> 'https://baidu.com',
     			],
     		],
+    		[
+    			'type'=> 4,
+    			'title'=> '爆品推荐',
+    			'data'=> [
+    				[
+    					'product_id'=>1000,
+    					'product_name'=>'WiFi云标签机',
+    					'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
+    					'product_price'=>700,
+    					'sale_price'=>600,
+    				],[
+    					'product_id'=>1001,
+    					'product_name'=>'打钱机',
+    					'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
+    					'product_price'=>800,
+    					'sale_price'=>500,
+    				],
+    			],
+    		],
     	];
     	
         return $this->formatApiData($result);
+    }
+
+    public function recommend() {
+    	$request = Request::instance();
+    	$page = $request->post('page', 1, 'intval');
+        $page_size = $request->post('page_size', 10, 'intval');
+    	$page = $page > 0 ? $page : 1;
+    	$page_size = $page_size > 0 ? $page_size : 1;
+
+    	$list = [
+    		[
+				'product_id'=>1000,
+				'product_name'=>'WiFi云标签机',
+				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
+				'product_price'=>700,
+				'sale_price'=>600,
+			],[
+				'product_id'=>1001,
+				'product_name'=>'打钱机',
+				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
+				'product_price'=>800,
+				'sale_price'=>500,
+			],
+			[
+				'product_id'=>1000,
+				'product_name'=>'WiFi云标签机',
+				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
+				'product_price'=>700,
+				'sale_price'=>600,
+			],[
+				'product_id'=>1001,
+				'product_name'=>'打钱机',
+				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
+				'product_price'=>800,
+				'sale_price'=>500,
+			],
+			[
+				'product_id'=>1000,
+				'product_name'=>'WiFi云标签机',
+				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
+				'product_price'=>700,
+				'sale_price'=>600,
+			],[
+				'product_id'=>1001,
+				'product_name'=>'打钱机',
+				'product_image'=>'https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png',
+				'product_price'=>800,
+				'sale_price'=>500,
+			],
+    	];
+
+    	$result = [
+    		'list'=> $list,
+    		'page'=> $page,
+    		'page_size'=> $page_size,
+    		'page_total'=> 8,
+    	];
+
+    	return $this->formatApiData($result);
     }
 }
