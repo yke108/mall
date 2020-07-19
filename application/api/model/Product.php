@@ -9,7 +9,7 @@ class Product extends Model
 {
 	/*商品详情页获取商品信息*/
 	public function getProductDetail($product_id) {
-		$info = Db::table('product')->alias('p')->join('__PRODUCT_DESCRIPTION__ pd', 'pd.product_id=p.product_id')->where(['p.product_id'=> 1])->find();
+		$info = Db::table('product')->alias('p')->join('__PRODUCT_DESCRIPTION__ pd', 'pd.product_id=p.product_id')->where(['p.product_id'=> $product_id])->find();
 		if (empty($info) || empty($info['product_status'])) {
 			return false;
 		}
@@ -24,7 +24,7 @@ class Product extends Model
 			'sale_number'=> $info['sale_number'],
 			'product_video'=> $info['product_video'],
 			'product_images'=> explode(',', $info['product_images']),
-			'product_description'=> $info['product_description'],
+			'product_description'=> htmlspecialchars_decode($info['product_description']),
 			'filter_list'=> [],
 			'poa_list'=> [],
 		];

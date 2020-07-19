@@ -11,7 +11,7 @@ class Product extends Base
     public function index()
     {
         $request = Request::instance();
-        $product_id = $request->post('product_id', 0, 'intval');
+        $product_id = $request->request('product_id', 0, 'intval');
         if ($product_id < 1) {
             return $this->formatApiData([], '参数不合法', 401);
         }
