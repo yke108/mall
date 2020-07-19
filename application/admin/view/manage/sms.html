@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="__PUBLIC__/Cs/frame//layui/css/layui.css"  media="all">
+  <style type="text/css">
+    .layui-form label {width: 200px}
+    .layui-form .layui-input-block {margin-left: 230px}
+    .layui-form input {width: 400px}
+  </style>
+</head>
+<body>            
+<form class="layui-form" style="margin-top: 10px;">
+  <div class="layui-form-item">
+    <label class="layui-form-label">SMS_ACCESS_KEY_ID</label>
+    <div class="layui-input-inline">
+      <input name="sms_access_key_id" class="layui-input" type="text" placeholder="" autocomplete="off" lay-verify="required" value="{$list['sms_access_key_id']}">
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">SMS_ACCESS_KEY_SECRET</label>
+    <div class="layui-input-inline">
+      <input name="sms_access_key_secret" class="layui-input" type="text" placeholder="" autocomplete="off" lay-verify="required" value="{$list['sms_access_key_secret']}">
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">SMS_SIGNATURE</label>
+      <div class="layui-input-inline">
+        <input name="sms_signature" class="layui-input" type="text" autocomplete="off" lay-verify="required" value="{$list['sms_signature']}">
+      </div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">SMS_TEMPLATE_CODE</label>
+    <div class="layui-input-inline">
+      <input name="sms_template_code" class="layui-input" type="text" placeholder="" autocomplete="off"value="{$list['sms_template_code']}">
+    </div>
+  </div>
+
+ 
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-filter="demo1" lay-submit="">保存设置</button>
+      <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+    </div>
+  </div>
+</form>
+<script src="__PUBLIC__/Cs/frame//layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+
+layui.use(['form', 'layer'], function () {
+  var $ = layui.jquery,form = layui.form(),layer = layui.layer;
+
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    $.post("{:U('Manage/sms')}",data.field,function(res){
+        if(res.code > 0){
+            layer.msg(res.msg,{time:1800,icon: 1},function(){
+                location.href = res.url;
+            });
+        }else{
+            layer.msg(res.msg,{time:1800,icon: 5});
+        }
+    },'json');
+    return false;
+  });
+  
+  
+});
+</script>
+
+</body>
+</html>

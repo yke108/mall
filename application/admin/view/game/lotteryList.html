@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>彩票设置</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="__PUBLIC__/Cs/frame/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="__PUBLIC__/Cs/frame/mystyle.css" />
+		<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+	</head>
+
+	<body>
+		</div>
+		<div class="layui-form">
+			<table class="layui-table"> 
+				<thead>
+					<tr>
+						<th>彩票ID</th>
+						<th>彩票名称</th>
+						<th>彩票API</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<volist name="list" id="data">
+					<tr>
+						<td>{$data['lottery_id']}</td>
+						<td>{$data['lottery_name']}</td>
+						<td>{$data['api_url']}</td>
+						<td>
+							<a href="#" class="layui-btn layui-btn-mini layui-btn-warm btn-edit" data-url="{:U('Game/editLottery',array('lottery_id'=>$data['lottery_id']))}">修改</a>
+						</td>
+					</tr>
+					</volist>
+				</tbody>
+			</table>
+		</div>
+		<script src="__PUBLIC__/Cs/frame/layui/layui.js" charset="utf-8"></script>
+		<script>
+			layui.use(['form','layer'], function() {
+				var $ = layui.jquery,form = layui.form(),layer = layui.layer;
+				// 修改
+				$('.btn-edit').on('click',function(){
+					var data_url = $(this).attr('data-url');
+  					layer.open({
+						type:2,
+						title:'修改彩票信息',
+						shadeClose:true,
+						shade:0.8,
+						area:['70%','50%'],
+						content:data_url
+					});
+  				});
+			});
+		</script>
+
+	</body>
+
+</html>
