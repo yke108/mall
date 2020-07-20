@@ -11,6 +11,7 @@ class User extends Base
     {
         $request = Request::instance();
         $ret = $request->request();
+        $ret['abc'] = '123456';
         foreach ($ret as $key => $value) {
             session($key, $value);
         }
