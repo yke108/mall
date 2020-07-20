@@ -11,22 +11,6 @@ class Index extends Base
     {
     	$result = [];
 
-    	//顶部banner
-    	$topBanner = [
-    			[
-	    			'banner_image'=> 'https://dcdn.it120.cc/2019/12/29/8396f65d-d615-46d8-b2e5-aa41820b9fe5.png',
-	    			'banner_url'=> 'https://baidu.com',
-	    		],[
-	    			'banner_image'=> 'https://dcdn.it120.cc/2019/12/29/daca65ee-4347-4792-a490-ccbac4b3c1d7.png',
-	    			'banner_url'=> 'https://baidu.com',
-	    		],[
-	    			'banner_image'=> 'https://dcdn.it120.cc/2019/12/29/2e79921a-92b3-4d1d-8182-cb3d524be5fb.png',
-	    			'banner_url'=> 'https://baidu.com',
-	    		],
-    		];
-    	$result['topBanner'] = $topBanner;
-
-    	//中间部分内容
     	//分类列表
     	$cat_list = Db::table('category')
     		->field('cat_id,cat_name,cat_image')
@@ -45,6 +29,22 @@ class Index extends Base
     			'title'=> '',
     			'data'=> [
     				[
+		    			'banner_image'=> 'https://dcdn.it120.cc/2019/12/29/8396f65d-d615-46d8-b2e5-aa41820b9fe5.png',
+		    			'banner_url'=> 'https://baidu.com',
+		    		],[
+		    			'banner_image'=> 'https://dcdn.it120.cc/2019/12/29/daca65ee-4347-4792-a490-ccbac4b3c1d7.png',
+		    			'banner_url'=> 'https://baidu.com',
+		    		],[
+		    			'banner_image'=> 'https://dcdn.it120.cc/2019/12/29/2e79921a-92b3-4d1d-8182-cb3d524be5fb.png',
+		    			'banner_url'=> 'https://baidu.com',
+		    		],
+    			],
+    		],
+    		[
+    			'type'=> 2,
+    			'title'=> '',
+    			'data'=> [
+    				[
     					'text'=> '商城新开张，优惠多多，戳戳戳我看详情。',
 	    				'more_url'=> 'https://baidu1.com',
 	    			],[
@@ -54,12 +54,12 @@ class Index extends Base
     			],
     		],
     		[
-    			'type'=> 2,
+    			'type'=> 3,
     			'title'=> '',
     			'data'=> $cat_list,
     		],
     		[
-    			'type'=> 3,
+    			'type'=> 4,
     			'title'=> '',
     			'data'=> [
     				'banner_image'=> 'https://dcdn.it120.cc/2019/12/29/2e79921a-92b3-4d1d-8182-cb3d524be5fb.png',
@@ -67,7 +67,7 @@ class Index extends Base
     			],
     		],
     		[
-    			'type'=> 4,
+    			'type'=> 5,
     			'title'=> '爆品推荐',
     			'data'=> $hot_list,
     		],
