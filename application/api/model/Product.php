@@ -65,4 +65,27 @@ class Product extends Model
 
 		return $result;
 	}
+
+	/*获取分类商品列表*/
+	public function categoryProductList($cat_id=0, $page=1, $size=20) {
+
+		$count = Db::table('product')->alias('p')
+			->join('__PRODUCT_CATEGORY__ pc', 'p.product_id=pc.product_id')
+			->field('p.product_id,p.product_name,p.product_image,p.product_price,p.sale_price')
+			->where("p.product_status=1 AND MATCH (pc.cat_path) AGAINST ('a{$cat_id}a' IN BOOLEAN MODE)")
+			->count();
+
+		$list = [];
+		if ($count) {
+			$list = Db::table('product')->alias('p')
+			->join('__PRODUCT_CATEGORY__ pc', 'p.product_id=pc.product_id')
+			->field('p.product_id,p.product_name,p.product_image,p.product_price,p.sale_price')
+			->where("p.product_status=1 AND MATCH (pc.cat_path) AGAINST ('a{$cat_id}a' IN BOOLEAN MODE)")
+			->page($page,$size)
+			->select();
+		}
+
+		return ['list'=> $list, 'count'=> $count];
+
+	}
 }

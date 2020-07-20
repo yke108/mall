@@ -44,8 +44,13 @@ class Index extends Base
     			'type'=> 1,
     			'title'=> '',
     			'data'=> [
-    				'text'=> '商城新开张，优惠多多，戳戳戳我看详情。',
-    				'more_url'=> 'https://baidu.com',
+    				[
+    					'text'=> '商城新开张，优惠多多，戳戳戳我看详情。',
+	    				'more_url'=> 'https://baidu1.com',
+	    			],[
+    					'text'=> '砍价专卖',
+	    				'more_url'=> 'https://baidu2.com',
+	    			],
     			],
     		],
     		[

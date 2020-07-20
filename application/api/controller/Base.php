@@ -8,7 +8,7 @@ class Base extends Controller {
     
     /*初始化*/
     public function _initialize() {
-        $request = Request::instance();
+        
     }
 
     /*输出*/
