@@ -8,7 +8,10 @@ class Base extends Controller {
     
     /*初始化*/
     public function _initialize() {
-        
+        if (isset($_COOKIE['PHPSESSID'])) {
+            session_id($_COOKIE['PHPSESSID']);
+        }
+        session_start();
     }
 
     /*输出*/

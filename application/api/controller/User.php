@@ -21,6 +21,7 @@ class User extends Base
     public function getSession()
     {
         $ret = \think\Session::get();
+        $ret['cookie'] = isset($_COOKIE['PHPSESSID']) ? $_COOKIE['PHPSESSID'] : '';
         return $this->formatApiData($ret);
     }
 }
