@@ -49,7 +49,7 @@ class Index extends Base
 	    				'content'=> '<p>尊敬的客户:</p><p>商城新开张，快来砸单哦！</p><p>&nbsp;&nbsp;&nbsp;&nbsp;1、单件包邮（秒杀）</p><p>&nbsp;&nbsp;&nbsp;&nbsp;2、每天发布6件秒杀商品</p><p>&nbsp;&nbsp;&nbsp;&nbsp;3、满返活动</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：满100元返10元券；</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B：满200元返25元券；</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C：满300元返40元券；</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;消费累计满500元，返80元券哦！</p>',
 	    				'add_time'=> '2020-07-21 09:00:00',
 	    			],[
-    					'text'=> '分享送积分',
+    					'title'=> '分享送积分',
 	    				'content'=> '<p>成功分享一次送10积分</p>',
 	    				'add_time'=> '2020-07-19 09:00:00',
 	    			],
