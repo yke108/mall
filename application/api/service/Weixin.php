@@ -4,9 +4,9 @@ namespace app\api\service;
 
 class Weixin {
 
-    private $appid = 'APPID';
+    private $appid = 'wx51b5cd02d562f364';
     
-    private $appsecret = 'APPSECRET';
+    private $appsecret = '7d33015eda5d349f9d53644c3e7aaeb3';
 
     /*获取openid*/
     public function getOpenid($code=null) {	
