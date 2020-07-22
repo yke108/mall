@@ -3,7 +3,6 @@ namespace app\api\controller;
 use app\api\controller\Base;
 use think\Db;
 use think\Request;
-use app\api\model\Product;
 
 class Category extends Base
 {
@@ -35,8 +34,7 @@ class Category extends Base
             return $this->formatApiData([], '参数不合法', 401);
         }
 
-        $Product = new Product();
-        $ret = $Product->categoryProductList($cat_id, $page, $size);
+        $ret = model('product')->categoryProductList($cat_id, $page, $size);
 
         $result = [
             'list'=> $ret['list'],

@@ -3,7 +3,6 @@ namespace app\api\controller;
 use app\api\controller\Base;
 use think\Db;
 use think\Request;
-use app\api\model\Product as modelProduct;
 
 class Product extends Base
 {
@@ -16,12 +15,20 @@ class Product extends Base
             return $this->formatApiData([], '参数不合法', 401);
         }
 
-        $modelProduct = new modelProduct();
-        $result = $modelProduct->getProductDetail($product_id);
+        $Product = model('product');
+        $result = $Product->getProductDetail($product_id);
 
         if (empty($result)) {
             return $this->formatApiData([], '商品不存在', 401);
         }
+
+        //是否加入收藏
+        $is_wish =false;
+        if ($this->user_id) {
+            $ret = Db::table('user_wish')->field('id')->where(['user_id'=> $this->user_id, 'product_id'=> $product_id])->find();
+            $is_wish = $ret ? true : false;
+        }
+        $result['is_wish'] = $is_wish;
 
         return $this->formatApiData($result);
 

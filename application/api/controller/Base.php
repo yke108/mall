@@ -5,13 +5,13 @@ use think\Request;
 use think\Db;
 
 class Base extends Controller {
+
+    /*用户ID*/
+    protected $user_id = null;
     
     /*初始化*/
     public function _initialize() {
-        /*if (isset($_COOKIE['PHPSESSID'])) {
-            session_id($_COOKIE['PHPSESSID']);
-        }
-        session_start();*/
+        $this->user_id = session('user_id');
     }
 
     /*输出*/

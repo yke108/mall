@@ -17,3 +17,15 @@ header("Content-Type: text/html;charset=utf-8");
 <p>
 分类商品列表:{{url}}/api/category/productList<br>参数:cat_id,page,size
 <p>
+<p>
+登录:{{url}}/api/user/login<br>参数:code,nickname,avatar_url
+<p>
+<p>
+退出登录:{{url}}/api/user/logout
+<p>
+<p>
+收藏:{{url}}/api/user/addWish<br>参数:product_id
+<p>
+<p>
+加购:{{url}}/api/cart/addCart<br>参数:product_id,poa_id,quantity
+<p>

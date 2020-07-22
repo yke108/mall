@@ -88,4 +88,9 @@ class Product extends Model
 		return ['list'=> $list, 'count'=> $count];
 
 	}
+
+	/*商品详情页获取商品信息*/
+	public function getProductInfo($product_id, $field="*") {
+		return Db::table('product')->field($field)->where(['product_id'=> $product_id])->find();
+	}
 }
