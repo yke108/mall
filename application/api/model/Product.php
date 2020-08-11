@@ -29,29 +29,30 @@ class Product extends Model
 			'poa_list'=> [],
 		];
 
-		if ($info['filter_ids']) {
+		if ($info['filters']) {
+			$filters = json_decode($info['filters'], true);//{"1":[1,2,3],"2":[4,5,6]}
+			$filter_ids = array_keys($filters);
 			//规格数据
-			$filter_ids = explode(',', $info['filter_ids']);
-			$ret = Db::table('product_filter')->field('filter_id,filter_name')->where("filter_id in ({$info['filter_ids']})")->select();
-			$list = [];
+			$ret = Db::table('product_filter')->field('filter_id,filter_name')->where("filter_id in (".implode(',', $filter_ids).")")->select();
+			$temp = [];
 			foreach ($ret as $key => $value) {
-				$list[$value['filter_id']] = $value;
+				$temp[$value['filter_id']] = $value;
 			}
-			foreach ($filter_ids as $filter_id) {
-				$filter_item = $list[$filter_id];
+			foreach ($filters as $filter_id => $filter_value_ids) {
+				$filter_item = $temp[$filter_id];
 				//规格值列表
-				$ret = Db::table('product_filter_value')->field('filter_value_id,filter_value')->where(['filter_id'=> $filter_id])->select();
-				$filter_item['value_list'] = $ret;
+				$value_list = Db::table('product_filter_value')->field('filter_value_id,filter_value')->where("filter_value_id in (".implode(',', $filter_value_ids).")")->select();
+				$filter_item['value_list'] = $value_list;
 				$result['filter_list'][] = $filter_item;
 			}
 
 			//poa数据product_poa_filter
-			$ret = Db::table('product_poa')->alias('pp')->join('__PRODUCT_POA_FILTER__ ppf', 'pp.poa_id=ppf.poa_id')->where(['pp.product_id'=> 1])->select();
-			$list = [];
+			$ret = Db::table('product_poa')->alias('pp')->join('__PRODUCT_POA_FILTER__ ppf', 'pp.poa_id=ppf.poa_id')->field('pp.poa_id,pp.sale_price,ppf.filter_value_id')->where(['pp.product_id'=> $product_id])->select();
+			$temp = [];
 			foreach ($ret as $value) {
-				$list[$value['poa_id']][] = $value;
+				$temp[$value['poa_id']][] = $value;
 			}
-			foreach ($list as $poa_id => $value) {
+			foreach ($temp as $poa_id => $value) {
 				$filter_value_ids = [];
 				foreach ($value as $v) {
 					$filter_value_ids[] = $v['filter_value_id'];
